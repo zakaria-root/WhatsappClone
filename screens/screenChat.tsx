@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, FlatList } from 'react-native';
 import ChatsListItem from '../components/ChatListItem';
 
 
@@ -11,7 +11,14 @@ import ChatRoms from '../data/ChatRoms';
 export default function TabTwoScreen() {
   return (
     <View style={styles.container}>
-      <ChatsListItem chatrom={ChatRoms[0]}  />
+      <FlatList
+        style={{ width: "100%" }}
+        data={ChatRoms}
+        renderItem={({item}) => <ChatsListItem chatrom={item}/>}
+        keyExtractor={(item) => (item.id) }
+      />
+
+      
     </View>
   );
 }

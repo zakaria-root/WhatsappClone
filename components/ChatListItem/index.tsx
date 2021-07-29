@@ -14,14 +14,19 @@ const ChatsListItem = (props: chatListRomProps) => {
     const user = chatrom.users[1];
     const image = user.imageUri;
     return (
-        <View>
-            <Image
-        style={styles.image}
-        source={user.imageUri}
-            />
-            <Text>{user.name}</Text>
-            <Text>{chatrom.lastMessage.content}</Text>
-            <Text>{chatrom.lastMessage.createdAt}</Text>
+        <View style={styles.container}>
+            <View style={styles.containerleft}>
+                <Image
+                    style={styles.image}
+                    source={user.imageUri}
+                />
+                <View style={styles.midel}>
+                <Text style={styles.username} >{user.name}</Text>
+                <Text style={styles.lastMessage}>{chatrom.lastMessage.content}</Text>
+                </View>
+            </View>
+
+            <Text style={styles.time}>yesterday</Text>
             
         </View>
     );
