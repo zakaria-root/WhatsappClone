@@ -38,8 +38,10 @@ function RootNavigator() {
       
       headerStyle:{
         backgroundColor: Colors.light.tint,
+        shadowOpacity : 0,
+        elevation: 0,
       },
-      headerTintColor: 'white',
+      headerTintColor: Colors.light.background,
       headerTitleStyle:{
         fontWeight: '500',
       }
@@ -56,7 +58,8 @@ function RootNavigator() {
               width:60, 
               justifyContent : 'space-between',
               flexDirection: 'row',
-              marginRight:10
+              marginRight:10,
+              
                 }}>
               
             <Feather name="search" size={24} color="white" />
