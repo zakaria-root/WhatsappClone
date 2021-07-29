@@ -8,10 +8,15 @@ import { createStackNavigator } from '@react-navigation/stack';
 import * as React from 'react';
 import { ColorSchemeName } from 'react-native';
 
+
+import Colors  from '../constants/Colors';
+import { EvilIcons, Feather } from '@expo/vector-icons';
+
 import NotFoundScreen from '../screens/NotFoundScreen';
 import { RootStackParamList } from '../types';
-import BottomTabNavigator from './BottomTabNavigator';
+import MainTabNavigator from './MainTabNavigator';
 import LinkingConfiguration from './LinkingConfiguration';
+import { View } from '../components/Themed';
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (
@@ -29,8 +34,37 @@ const Stack = createStackNavigator<RootStackParamList>();
 
 function RootNavigator() {
   return (
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="Root" component={BottomTabNavigator} />
+    <Stack.Navigator screenOptions={{ 
+      
+      headerStyle:{
+        backgroundColor: Colors.light.tint,
+      },
+      headerTintColor: 'white',
+      headerTitleStyle:{
+        fontWeight: '500',
+      }
+      
+    }}
+    >
+
+      <Stack.Screen name="Root" component={MainTabNavigator} 
+      options={{ 
+        title: 'Whatsapp',
+        headerRight: () => (
+          <View style={{ 
+              backgroundColor: '#006938',
+              width:60, 
+              justifyContent : 'space-between',
+              flexDirection: 'row',
+              marginRight:10
+                }}>
+              
+            <Feather name="search" size={24} color="white" />
+            <Feather name="more-vertical" size={24} color="white" />
+          </View>
+        )
+       }}
+      />
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
     </Stack.Navigator>
   );
