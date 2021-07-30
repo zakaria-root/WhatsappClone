@@ -1,5 +1,6 @@
 import { StyleSheet } from "react-native";
 import { block } from "react-native-reanimated";
+import Colors from "../../constants/Colors";
 
 const styles = StyleSheet.create({
     container:{
@@ -21,6 +22,7 @@ const styles = StyleSheet.create({
     status:{
         fontSize: 16,
         color: "grey",
+        marginRight: 90,
     },
     image:{
         width: 65,
@@ -29,6 +31,18 @@ const styles = StyleSheet.create({
         borderRadius: 50,
     },
     
+    icon:{
+        backgroundColor : "#67EBAA",
+        width: 65,
+        height: 65,
+        marginRight: 15,
+        borderRadius: 50,
+        justifyContent : "center",
+        alignItems: "center",
+        paddingTop :16,
+        paddingLeft :18,
+
+    }
 });
 
 export default styles;

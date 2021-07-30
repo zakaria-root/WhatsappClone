@@ -11,8 +11,10 @@ import users from '../data/users';
 
 
 export default function TabTwoScreen() {
+  
   return (
     <View style={styles.container}>
+      
       <FlatList
         style={{ width: "100%" }}
         data={users}

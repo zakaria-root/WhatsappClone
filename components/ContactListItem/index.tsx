@@ -7,6 +7,7 @@ import {
     TouchableWithoutFeedback,
     } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { MaterialIcons,Ionicons } from '@expo/vector-icons';
 
 import { User } from '../../types';
 import styles from './styles';
@@ -20,21 +21,44 @@ const ContactListItem = (props: conttactListItemProps) => {
     const { user }  = props;
     const navigation = useNavigation();
 
-
+    const notUser = () => {
+        return user.id === 'u0' || user.id === 'u01';
+    }
+    const forGroup = () => {
+        return user.id === 'u0';
+    }
     const onClick = () => {
         // navigate to chatRom
     }
+    const isMe = () =>{
+        return user.id === "u1";
+    }
     return (
+        !isMe() &&
         <TouchableWithoutFeedback onPress={onClick}>
-            <View style={styles.container}>
+             <View style={styles.container}>
                 <View style={styles.containerleft}>
-                    <Image
-                        style={styles.image}
-                        source={user.imageUri}
-                    />
+                    {!notUser() ? 
+                        <Image
+                            style={styles.image}
+                            source={user.imageUri}
+                        /> : 
+                        (
+                        
+                        forGroup() ? <MaterialIcons style={styles.icon} name="group" size={33} color="white" /> :
+                        <Ionicons style={styles.icon} name="md-person-add-sharp" size={28} color="white" />
+                        
+                        )
+                    }
                     <View style={styles.midel}>
                     <Text style={styles.username} >{user.name}</Text>
-                    <Text style={styles.status}>{user.status}</Text>
+                    {!notUser() && 
+                        <Text 
+                        style={styles.status}
+                        numberOfLines={1} 
+                        ellipsizeMode='tail'
+                        >{user.status}</Text> 
+                    }
                     </View>
                 </View>
 
