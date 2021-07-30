@@ -24,6 +24,7 @@ import MainTabNavigator from './MainTabNavigator';
 import LinkingConfiguration from './LinkingConfiguration';
 import { View } from '../components/Themed';
 import screenChatRom from '../screens/screenChatRom';
+import screenContacts from '../screens/screenContacts';
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (
@@ -56,7 +57,9 @@ function RootNavigator() {
     }}
     >
 
-      <Stack.Screen name="Root" component={MainTabNavigator} 
+      <Stack.Screen 
+      name="Root" 
+      component={MainTabNavigator} 
       options={{ 
         title: 'Whatsapp',
         headerRight: () => (
@@ -97,7 +100,27 @@ function RootNavigator() {
       })}
       
       />
-      
+      <Stack.Screen 
+      name="contacts" 
+      component={screenContacts} 
+      options={{ 
+        title: 'Contacts',
+        headerRight: () => (
+          <View style={{ 
+              backgroundColor: '#006938',
+              width:60, 
+              justifyContent : 'space-between',
+              flexDirection: 'row',
+              marginRight:10,
+              
+                }}>
+              
+            <Feather name="search" size={24} color="white" />
+            <Feather name="more-vertical" size={24} color="white" />
+          </View>
+        )
+       }}
+      />
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
     </Stack.Navigator>
   );

@@ -19,6 +19,8 @@ const InputBox = () => {
 
     const onSendMessage = () => {
         console.warn('send the message: ' +message );
+
+        setMessage('');
     }
     const onSendMicrophone = () => {
         console.warn('send the audio width microphone: ' );

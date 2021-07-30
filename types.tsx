@@ -7,6 +7,7 @@ export type RootStackParamList = {
   Root: undefined;
   ChatRom : undefined;
   NotFound: undefined;
+  contacts : undefined;
 };
 
 export type MainTabParamList = {
