@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
         justifyContent : "space-around"
     },
     time:{
-        fontSize: 16,
+        fontSize: 14,
         color: "grey",
     },
     image:{

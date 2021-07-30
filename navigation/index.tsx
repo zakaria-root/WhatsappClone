@@ -10,13 +10,20 @@ import { ColorSchemeName } from 'react-native';
 
 
 import Colors  from '../constants/Colors';
-import { EvilIcons, Feather } from '@expo/vector-icons';
+import { 
+      EvilIcons, 
+      Feather,
+      FontAwesome5,
+      MaterialCommunityIcons,
+      MaterialIcons,
+    } from '@expo/vector-icons';
 
 import NotFoundScreen from '../screens/NotFoundScreen';
 import { RootStackParamList } from '../types';
 import MainTabNavigator from './MainTabNavigator';
 import LinkingConfiguration from './LinkingConfiguration';
 import { View } from '../components/Themed';
+import screenChatRom from '../screens/screenChatRom';
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (
@@ -68,6 +75,29 @@ function RootNavigator() {
         )
        }}
       />
+      <Stack.Screen 
+      name="ChatRom" 
+      component={screenChatRom} 
+      options={({ route }) => ({ 
+        title: route.params.name,
+        headerRight:() => (
+
+          <View style={{ 
+              backgroundColor: '#006938',
+              width:110, 
+              justifyContent : 'space-between',
+              flexDirection: 'row',
+              marginRight:10, 
+              }}>
+            <FontAwesome5 name="video" size={24} color="white" />
+            <MaterialIcons name="call" size={24} color="white" />
+            <MaterialCommunityIcons name="dots-vertical" size={24} color="white" />
+          </View>
+        )
+      })}
+      
+      />
+      
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
     </Stack.Navigator>
   );
