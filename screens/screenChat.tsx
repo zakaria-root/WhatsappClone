@@ -16,6 +16,7 @@ export default function TabTwoScreen() {
         data={ChatRoms}
         renderItem={({item}) => <ChatsListItem chatrom={item}/>}
         keyExtractor={(item) => (item.id) }
+        
       />
 
       

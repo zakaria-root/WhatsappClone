@@ -32,11 +32,12 @@ export type Message = {
   id : string,
   content : string,
   createdAt : string,
+  user :User,
 };
 
 export type ChatRom = {
   id : string,
-  users: [User],
+  users: User[],
   lastMessage: string,
 };
 
