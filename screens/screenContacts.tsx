@@ -1,12 +1,13 @@
 import * as React from 'react';
 import { StyleSheet, FlatList } from 'react-native';
 import ChatsListItem from '../components/ChatListItem';
+import ContactListItem from '../components/ContactListItem';
 
 
 import EditScreenInfo from '../components/EditScreenInfo';
 import NewMessageButton from '../components/newMessageBtton';
-import { Text, View } from '../components/Themed';
-import ChatRoms from '../data/ChatRoms';
+import { View } from '../components/Themed';
+import users from '../data/users';
 
 
 export default function TabTwoScreen() {
@@ -14,13 +15,12 @@ export default function TabTwoScreen() {
     <View style={styles.container}>
       <FlatList
         style={{ width: "100%" }}
-        data={ChatRoms}
-        renderItem={({item}) => <ChatsListItem chatrom={item}/>}
+        data={users}
+        renderItem={({item}) => <ContactListItem user={item}/>}
         keyExtractor={(item) => (item.id) }
         
       />
 
-      <NewMessageButton />
     </View>
   );
 }
