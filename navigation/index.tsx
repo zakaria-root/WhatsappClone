@@ -65,7 +65,7 @@ function RootNavigator() {
         title: 'Whatsapp',
         headerRight: () => (
           <View style={{ 
-              backgroundColor: '#006938',
+              backgroundColor: Colors.light.tint,
               width:60, 
               justifyContent : 'space-between',
               flexDirection: 'row',
@@ -84,7 +84,7 @@ function RootNavigator() {
       component={screenChatRom} 
       options={({ route }) => ({ 
         headerBackImage : () => (
-          <View style={{ backgroundColor:"#006938", flexDirection: 'row' }}>
+          <View style={{ backgroundColor:Colors.light.tint, flexDirection: 'row' }}>
             <Ionicons name="arrow-back-outline" size={24} color="white" style={{ paddingTop:5 }} />
             <Image 
             source={route.params.image} 
@@ -104,7 +104,7 @@ function RootNavigator() {
         headerRight:() => (
 
           <View style={{ 
-              backgroundColor: '#006938',
+              backgroundColor: Colors.light.tint,
               width:110, 
               justifyContent : 'space-between',
               flexDirection: 'row',
@@ -125,7 +125,7 @@ function RootNavigator() {
         title: 'Contacts',
         headerRight: () => (
           <View style={{ 
-              backgroundColor: '#006938',
+              backgroundColor: Colors.light.tint,
               width:60, 
               justifyContent : 'space-between',
               flexDirection: 'row',

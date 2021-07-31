@@ -10,6 +10,15 @@ const styles  = StyleSheet.create({
         backgroundColor : "white",
         borderRadius: 10,
         padding: 10,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 10,
+        },
+        shadowOpacity: 0.40,
+        shadowRadius: 15.19,
+
+        elevation: 3,
     },
     name:{
         color : Colors.light.tint,

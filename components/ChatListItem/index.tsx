@@ -42,7 +42,12 @@ const ChatsListItem = (props: chatListRomProps) => {
                     />
                     <View style={styles.midel}>
                     <Text style={styles.username} >{user.name}</Text>
-                    <Text style={styles.lastMessage}>{chatrom.lastMessage.content}</Text>
+                    <Text 
+                    style={styles.lastMessage}
+                    numberOfLines={1} 
+                    ellipsizeMode={"tail"}
+                    
+                    >{chatrom.lastMessage.content}</Text>
                     </View>
                 </View>
 
