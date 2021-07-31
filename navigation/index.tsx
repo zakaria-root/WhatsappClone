@@ -6,7 +6,7 @@
 import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import * as React from 'react';
-import { ColorSchemeName } from 'react-native';
+import { ColorSchemeName ,Text, View,Image} from 'react-native';
 
 
 import Colors  from '../constants/Colors';
@@ -16,13 +16,14 @@ import {
       FontAwesome5,
       MaterialCommunityIcons,
       MaterialIcons,
+      Ionicons
     } from '@expo/vector-icons';
 
 import NotFoundScreen from '../screens/NotFoundScreen';
 import { RootStackParamList } from '../types';
 import MainTabNavigator from './MainTabNavigator';
 import LinkingConfiguration from './LinkingConfiguration';
-import { View } from '../components/Themed';
+
 import screenChatRom from '../screens/screenChatRom';
 import screenContacts from '../screens/screenContacts';
 
@@ -82,7 +83,24 @@ function RootNavigator() {
       name="ChatRom" 
       component={screenChatRom} 
       options={({ route }) => ({ 
+        headerBackImage : () => (
+          <View style={{ backgroundColor:"#006938", flexDirection: 'row' }}>
+            <Ionicons name="arrow-back-outline" size={24} color="white" style={{ paddingTop:5 }} />
+            <Image 
+            source={route.params.image} 
+            style={{ 
+              width: 38, 
+              height: 38,
+              borderRadius:50,
+              
+              }}/>
+          </View>
+        ),
         title: route.params.name,
+        headerTitleStyle:{
+          paddingLeft: 15,
+          paddingBottom: 5,
+        },
         headerRight:() => (
 
           <View style={{ 
@@ -96,7 +114,7 @@ function RootNavigator() {
             <MaterialIcons name="call" size={24} color="white" />
             <MaterialCommunityIcons name="dots-vertical" size={24} color="white" />
           </View>
-        )
+        ),
       })}
       
       />

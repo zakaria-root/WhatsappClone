@@ -28,6 +28,7 @@ const ChatsListItem = (props: chatListRomProps) => {
                 {
                     id: chatrom.id, 
                     name: user.name,
+                    image: user.imageUri,
                 }
                 );
     }
