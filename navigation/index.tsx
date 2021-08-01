@@ -7,7 +7,7 @@ import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/
 import { createStackNavigator } from '@react-navigation/stack';
 import * as React from 'react';
 import { ColorSchemeName ,Text, View,Image} from 'react-native';
-
+import ScreenAuth from '../screens/screenAuth';
 
 import Colors  from '../constants/Colors';
 import { 
@@ -137,6 +137,13 @@ function RootNavigator() {
             <Feather name="more-vertical" size={24} color="white" />
           </View>
         )
+       }}
+      />
+      <Stack.Screen 
+      name="auth" 
+      component={ScreenAuth} 
+      options={{ 
+        title: 'Authentication',
        }}
       />
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
