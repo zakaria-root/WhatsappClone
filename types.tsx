@@ -8,6 +8,8 @@ export type RootStackParamList = {
   ChatRom : undefined;
   NotFound: undefined;
   contacts : undefined;
+  login: undefined; 
+  register: undefined;
 };
 
 export type MainTabParamList = {
@@ -47,3 +49,7 @@ export type ChatRom = {
 export type TabTwoParamList = {
   TabTwoScreen: undefined;
 };
+
+export type IsLogedIn = {
+  isLogedIn:boolean;
+}

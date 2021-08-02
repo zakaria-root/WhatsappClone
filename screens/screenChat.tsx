@@ -14,36 +14,34 @@ import apiKeys from '../config/keys';
 
 export default class App extends React.Component {
 
-  constructor(props){
-    super(props);
-    this.state = {
-      isLoaded : false,
-      isAuthenticationRedy : false,
-      isAuthenticated : true,
-    }
-    if (!firebase.apps.length) {
-      firebase.initializeApp(apiKeys.firebaseConfig);
-      firebase.auth().onAuthStateChanged((user) => {
-          this.setState({isAuthenticationRedy : true});
-          this.setState({isAuthenticated : !!user});
-      })
-    }
-  }
+  // constructor(props){
+  //   super(props);
+  //   this.state = {
+  //     isLoaded : false,
+  //     isAuthenticationRedy : false,
+  //     isAuthenticated : true,
+  //   }
+  //   if (!firebase.apps.length) {
+  //     firebase.initializeApp(apiKeys.firebaseConfig);
+  //     firebase.auth().onAuthStateChanged((user) => {
+  //         this.setState({isAuthenticationRedy : true});
+  //         this.setState({isAuthenticated : !!user});
+  //     })
+  //   }
+  // }
   render(){
     
     return (
     <View style={styles.container}>
-      
-     {this.state.isAuthenticated && <ToAuth />} 
 
-      {/* <FlatList
+      <FlatList
         style={{ width: "100%" }}
         data={ChatRoms}
         renderItem={({item}) => <ChatsListItem chatrom={item}/>}
         keyExtractor={(item) => (item.id) }
         
       />
-      <NewMessageButton /> */}
+      <NewMessageButton />
     </View>
   );
 }
@@ -51,15 +49,15 @@ export default class App extends React.Component {
 }
 
 // methode can redirected to authentication
-export function ToAuth(){
-  const navigation =  useNavigation();
-  const auth = () => navigation.navigate('auth')
+// export function ToAuth(){
+//   const navigation =  useNavigation();
+//   const auth = () => navigation.navigate('login')
     
-  return(
-    <View onLayout={auth}>
-    </View>
-  )
-}
+//   return(
+//     <View onLayout={auth}>
+//     </View>
+//   )
+// }
 
 
 

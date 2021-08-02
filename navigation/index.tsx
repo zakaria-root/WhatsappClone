@@ -7,7 +7,7 @@ import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/
 import { createStackNavigator } from '@react-navigation/stack';
 import * as React from 'react';
 import { ColorSchemeName ,Text, View,Image} from 'react-native';
-import ScreenAuth from '../screens/screenAuth';
+import SecreenLogin from '../screens/screenLogin';
 
 import Colors  from '../constants/Colors';
 import { 
@@ -20,19 +20,21 @@ import {
     } from '@expo/vector-icons';
 
 import NotFoundScreen from '../screens/NotFoundScreen';
-import { RootStackParamList } from '../types';
+import { IsLogedIn, RootStackParamList } from '../types';
 import MainTabNavigator from './MainTabNavigator';
 import LinkingConfiguration from './LinkingConfiguration';
 
 import screenChatRom from '../screens/screenChatRom';
 import screenContacts from '../screens/screenContacts';
+import ScreenRegister from '../screens/screenRegister';
 
-export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
+export default function Navigation(props) {
+
   return (
     <NavigationContainer
       linking={LinkingConfiguration}
-      theme={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <RootNavigator />
+      theme={props.colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+      {props.isLogedIn ? <RootNavigator /> : <AuthNavigator />}
     </NavigationContainer>
   );
 }
@@ -139,9 +141,38 @@ function RootNavigator() {
         )
        }}
       />
+      
+      <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
+    </Stack.Navigator>
+  );
+}
+
+function AuthNavigator() {
+  return (
+    <Stack.Navigator screenOptions={{ 
+      
+      headerStyle:{
+        backgroundColor: Colors.light.tint,
+        shadowOpacity : 0,
+        elevation: 0,
+      },
+      headerTintColor: Colors.light.background,
+      headerTitleStyle:{
+        fontWeight: '500',
+      }
+      
+    }}
+    >
       <Stack.Screen 
-      name="auth" 
-      component={ScreenAuth} 
+      name="login" 
+      component={SecreenLogin} 
+      options={{ 
+        title: 'Authentication',
+       }}
+      />
+      <Stack.Screen 
+      name="register" 
+      component={ScreenRegister} 
       options={{ 
         title: 'Authentication',
        }}
