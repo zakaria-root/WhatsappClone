@@ -30,7 +30,6 @@ export type User = {
   name: string,
   imageUri: string,
   status: string,
-
 };
 
 export type Message = {

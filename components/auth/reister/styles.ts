@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
         height: "100%",
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: "gray",
+        backgroundColor: "#E3E3E3",
         
     },
     formContainer:{
@@ -44,6 +44,14 @@ const styles = StyleSheet.create({
         paddingHorizontal: 5,
         fontWeight: "bold",
         color : Colors.light.tint
+    },
+    cercleContainer:{
+        width: "100%",
+        height: "100%",
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: '#F7F7F7',
+        
     }
 })
 

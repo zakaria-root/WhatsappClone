@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
         height: "100%",
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: "gray",
+        backgroundColor: "#E3E3E3",
         
     },
     formContainer:{
@@ -23,8 +23,6 @@ const styles = StyleSheet.create({
         paddingHorizontal :15,
         backgroundColor :"white",
         borderRadius :18,
-        
-
     },
     button:{
         marginTop: 8,

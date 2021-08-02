@@ -15,10 +15,10 @@ import { useNavigation } from '@react-navigation/core';
 export default function Login(){
 
     const navigation = useNavigation();
-    const [state, setState] = useState({
-    email: '',
-    password :'', 
-    });
+
+    const [email, setEmail] = useState(null);
+    const [password, setPassword] = useState(null);
+
     const changeValue = () =>  {
         console.warn('is valid plz work');
     }
@@ -43,37 +43,31 @@ export default function Login(){
             label="email"
             keyboardType="default"
             required
-            contain=""
+            contain={email}
             autoCapitalize="sentences"
             errorText="Your name is invalid"
-            onInputChange={(email) => {
-                    setState({
-                        ...state,
-                        email
-                        });
-                        }}
-            initialValue=""
+            onInputChange={(email)=>{
+                setEmail(email)
+            }}
+            
             outlined
             borderColor={Colors.light.tint}
             />
+            
             <Input
             id="password"
             label="password"
             keyboardType="default"
             secureTextEntry
             required
-            submit={!isSignup && authHandler}
             minLength={6}
             maxLength={20}
             autoCapitalize="none"
             errorText="Your password is invalid"
             onInputChange={(password) => {
-                setState({
-                    ...state,
-                    password
-                    });
+                setPassword(password)
                     }}
-            initialValue=""
+            
             outlined
             borderColor={Colors.light.tint}
             />
