@@ -104,7 +104,7 @@ export default function Register(){
         email
         />
         <Input
-        id="confirmed password"
+        id="password"
         label="password"
         keyboardType="default"
         secureTextEntry

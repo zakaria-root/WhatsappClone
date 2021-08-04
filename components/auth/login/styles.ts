@@ -42,6 +42,14 @@ const styles = StyleSheet.create({
         paddingHorizontal: 4,
         fontWeight: "bold",
         color : Colors.light.tint
+    },
+    cercleContainer:{
+        width: "100%",
+        height: "100%",
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: '#F7F7F7',
+        
     }
 })
 

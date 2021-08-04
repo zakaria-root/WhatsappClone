@@ -10,30 +10,20 @@ import { isLoaded } from 'expo-font';
 import { useNavigation } from '@react-navigation/native';
 import firebase from 'firebase';
 import apiKeys from '../config/keys';
+import { useState } from 'react';
+import Navigation from '../navigation';
+import Authoriation from '../components/auth/Autorisation.';
+import Logout from '../components/auth/Logout';
+
+export default function ScreenChat({ route }){
 
 
-export default class App extends React.Component {
+ 
 
-  // constructor(props){
-  //   super(props);
-  //   this.state = {
-  //     isLoaded : false,
-  //     isAuthenticationRedy : false,
-  //     isAuthenticated : true,
-  //   }
-  //   if (!firebase.apps.length) {
-  //     firebase.initializeApp(apiKeys.firebaseConfig);
-  //     firebase.auth().onAuthStateChanged((user) => {
-  //         this.setState({isAuthenticationRedy : true});
-  //         this.setState({isAuthenticated : !!user});
-  //     })
-  //   }
-  // }
-  render(){
     
     return (
     <View style={styles.container}>
-
+      {/* <Authoriation /> */}
       <FlatList
         style={{ width: "100%" }}
         data={ChatRoms}
@@ -42,23 +32,12 @@ export default class App extends React.Component {
         
       />
       <NewMessageButton />
+      <Logout />
+      
     </View>
   );
-}
   
 }
-
-// methode can redirected to authentication
-// export function ToAuth(){
-//   const navigation =  useNavigation();
-//   const auth = () => navigation.navigate('login')
-    
-//   return(
-//     <View onLayout={auth}>
-//     </View>
-//   )
-// }
-
 
 
 const styles = StyleSheet.create({

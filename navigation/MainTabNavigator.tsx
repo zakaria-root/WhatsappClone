@@ -13,7 +13,7 @@ import { Fontisto } from '@expo/vector-icons';
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
 import TabOneScreen from '../screens/TabOneScreen';
-import screenChat from '../screens/screenChat';
+import ScreenChat from '../screens/screenChat';
 import { MainTabParamList, TabOneParamList, TabTwoParamList } from '../types';
 
 const MainTab = createMaterialTopTabNavigator<MainTabParamList>();
@@ -42,7 +42,7 @@ export default function MainTabNavigator() {
         }}>
       <MainTab.Screen
         name="Camera"
-        component={screenChat}
+        component={ScreenChat}
         options={{
           tabBarIcon: ({ color }) => <Fontisto name="camera" color={color} size={18} />,
           tabBarLabel: () => null,
@@ -50,21 +50,21 @@ export default function MainTabNavigator() {
       />
       <MainTab.Screen
         name="Chats"
-        component={screenChat}
+        component={ScreenChat}
         options={{
           // tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
         }}
       />
       <MainTab.Screen
         name="Status"
-        component={screenChat}
+        component={ScreenChat}
         options={{
           // tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
         }}
       />
       <MainTab.Screen
         name="Calls"
-        component={screenChat}
+        component={ScreenChat}
         options={{
           // tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
         }}
@@ -103,7 +103,7 @@ function TabTwoNavigator() {
     <TabTwoStack.Navigator>
       <TabTwoStack.Screen
         name="TabTwoScreen"
-        component={screenChat}
+        component={ScreenChat}
         options={{ headerTitle: 'Tab Two Title' }}
       />
     </TabTwoStack.Navigator>

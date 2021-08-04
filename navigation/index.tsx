@@ -27,14 +27,17 @@ import LinkingConfiguration from './LinkingConfiguration';
 import screenChatRom from '../screens/screenChatRom';
 import screenContacts from '../screens/screenContacts';
 import ScreenRegister from '../screens/screenRegister';
+import { useNavigation } from '@react-navigation/native';
 
 export default function Navigation(props) {
+  
 
+  
   return (
     <NavigationContainer
       linking={LinkingConfiguration}
       theme={props.colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      {props.isLogedIn ? <RootNavigator /> : <AuthNavigator />}
+      <RootNavigator />
     </NavigationContainer>
   );
 }
@@ -120,6 +123,20 @@ function RootNavigator() {
       })}
       
       />
+       <Stack.Screen 
+      name="login" 
+      component={SecreenLogin} 
+      options={{ 
+        title: 'Authentication',
+       }}
+      />
+      <Stack.Screen 
+      name="register" 
+      component={ScreenRegister} 
+      options={{ 
+        title: 'Authentication',
+       }}
+      />
       <Stack.Screen 
       name="contacts" 
       component={screenContacts} 
@@ -163,20 +180,7 @@ function AuthNavigator() {
       
     }}
     >
-      <Stack.Screen 
-      name="login" 
-      component={SecreenLogin} 
-      options={{ 
-        title: 'Authentication',
-       }}
-      />
-      <Stack.Screen 
-      name="register" 
-      component={ScreenRegister} 
-      options={{ 
-        title: 'Authentication',
-       }}
-      />
+     
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
     </Stack.Navigator>
   );

@@ -6,10 +6,9 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import useCachedResources from './hooks/useCachedResources';
 import useColorScheme from './hooks/useColorScheme';
 import Navigation from './navigation';
-
-import store from 'firebase/storage';
 import firebase from 'firebase';
 import apiKeys from './config/keys';
+
 
 
 export default function App() {
@@ -17,11 +16,10 @@ export default function App() {
   
   if (!firebase.apps.length) {
     firebase.initializeApp(apiKeys.firebaseConfig);
-    
-  }
+}
+
   const isLoadingComplete = useCachedResources();
   const colorScheme = useColorScheme();
-  const [isLogedIn, setIsLogedIn] = useState(false);
 
   if (!isLoadingComplete) {
     return null;
@@ -29,7 +27,7 @@ export default function App() {
     return (
       <SafeAreaProvider>
         
-        <Navigation colorScheme={colorScheme} isLogedIn={isLogedIn}/>
+        <Navigation colorScheme={colorScheme} />
         <StatusBar />
       </SafeAreaProvider>
     );

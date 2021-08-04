@@ -11,70 +11,95 @@ import styles from './styles';
 import WhatsappButton from '../../WhatsappButton';
 import Input from 'react-native-input-style';
 import { useNavigation } from '@react-navigation/core';
+import firebase from 'firebase';
+import { isLoaded } from 'expo-font';
+import { ActivityIndicator } from 'react-native';
+import Navigation from '../../../navigation';
+import useColorScheme from '../../../hooks/useColorScheme';
+import Authoriation from '../Autorisation.';
 
 export default function Login(){
 
     const navigation = useNavigation();
 
-    const [email, setEmail] = useState(null);
-    const [password, setPassword] = useState(null);
+    const colorScheme = useColorScheme();
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [isLoaded, setIsLoaded] = useState(false);
+    const [isLoadedIn, setIsLoadedIn] = useState(false);
+    
+    
 
-    const changeValue = () =>  {
-        console.warn('is valid plz work');
-    }
-    const isSignup = false;
-    const authHandler  = () => {
-        console.warn('you ar not sing up');
-        
-    }
-    const test = () => {
-                alert("user is loged");
-            }
-    const register = () =>{
+
+    const register = () => {
         navigation.navigate('register')
     }
-    return(
-        <View style={styles.container}>
+    
+    const login = () => {
+        firebase
+        .auth()
+        .signInWithEmailAndPassword(email, password)
+        .then(({user}) => {
+            setIsLoaded(true);
+            firebase
+            .database()
+            .ref()
+            .child("users/")
+            .child(user?.uid)
+            .on("value", (doc) => {
+                setIsLoaded(false);
+                setIsLoadedIn(true);
+                
+            })
+        }).catch((err) => {
+            setIsLoaded(false);
+            alert(err);
+        })
+    }
+
+    return isLoaded ? (
+        <View style={styles.cercleContainer}>
+            <ActivityIndicator size={50} color={Colors.light.tint} />
+        </View>
+    ) :( isLoadedIn ? <Authoriation isLogedIn={true} /> : (
+            <View style={styles.container}>
             <View style={styles.formContainer}>
             <Text style={styles.text}>Login Page</Text>
             <Input
-            onlyEnglish
-            id="name"
-            label="email"
-            keyboardType="default"
-            required
-            contain={email}
-            autoCapitalize="sentences"
-            errorText="Your name is invalid"
-            onInputChange={(email)=>{
-                setEmail(email)
-            }}
-            
-            outlined
-            borderColor={Colors.light.tint}
-            />
+                id="email"
+                label="email"
+                keyboardType="default"
+                required
+                errorText="Your email is invalid"
+                onInputChange={async (e, email) =>{
+                    setEmail(email)
+                }}
+                initialValue={email}
+                outlined
+                borderColor={Colors.light.tint}
+                email
+                />
             
             <Input
-            id="password"
-            label="password"
-            keyboardType="default"
-            secureTextEntry
-            required
-            minLength={6}
-            maxLength={20}
-            autoCapitalize="none"
-            errorText="Your password is invalid"
-            onInputChange={(password) => {
-                setPassword(password)
-                    }}
-            
-            outlined
-            borderColor={Colors.light.tint}
-            />
+                id="password"
+                label="password"
+                keyboardType="default"
+                secureTextEntry
+                required
+                minLength={6}
+                maxLength={20}
+                autoCapitalize="none"
+                errorText="Your password is invalid"
+                onInputChange={async (e, password) =>{
+                    setPassword(password)
+                }}
+                outlined
+                borderColor={Colors.light.tint}
+                />
             <View style={styles.button}>
                 <WhatsappButton 
                     title="SING IN" 
-                    onPress={test}
+                    onPress={login}
                     bgColor={Colors.light.tint}
                     />
             </View>
@@ -89,5 +114,6 @@ export default function Login(){
             
 
         </View>
-    );
+    )
+        );
 }
