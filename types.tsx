@@ -36,13 +36,29 @@ export type Message = {
   id : string,
   content : string,
   createdAt : string,
+  nbOfContent: number,
+  reder: boolean,
   user :User,
+};
+
+export type Call = {
+  id : string,
+  hoCall : string,
+  acc: boolean,
+  type: string,
+  createdAt : string,
 };
 
 export type ChatRom = {
   id : string,
   users: User[],
-  lastMessage: string,
+  lastMessage: Message,
+};
+
+export type callRom = {
+  id : string,
+  users: User[],
+  calls: Call,
 };
 
 export type TabTwoParamList = {

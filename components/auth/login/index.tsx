@@ -71,7 +71,7 @@ export default function Login(){
                 keyboardType="default"
                 required
                 errorText="Your email is invalid"
-                onInputChange={async (e, email) =>{
+                onInputChange={async (e, email:string) =>{
                     setEmail(email)
                 }}
                 initialValue={email}
@@ -90,7 +90,7 @@ export default function Login(){
                 maxLength={20}
                 autoCapitalize="none"
                 errorText="Your password is invalid"
-                onInputChange={async (e, password) =>{
+                onInputChange={async (e, password : string) =>{
                     setPassword(password)
                 }}
                 outlined

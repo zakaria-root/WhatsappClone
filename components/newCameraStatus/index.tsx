@@ -1,11 +1,11 @@
 import React from "react";
 import { View } from "react-native";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { Entypo } from "@expo/vector-icons";
 import styles from "./styles";
 import { TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
-const NewMessageButton = () => {
+const NewCameraStatus = () => {
 
     const navigation = useNavigation();
     const onclick = () => {
@@ -16,10 +16,10 @@ const NewMessageButton = () => {
     return(
         <View style={styles.container}>
             <TouchableOpacity onPress={onclick} >
-                <MaterialCommunityIcons name="message-reply-text" size={28} color={"white"}/>
+            <Entypo name="camera" size={24} color="white" />
             </TouchableOpacity>
         </View>
     )
 }
 
-export default NewMessageButton;
+export default NewCameraStatus;

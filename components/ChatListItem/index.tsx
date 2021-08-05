@@ -10,7 +10,8 @@ import { useNavigation } from '@react-navigation/native';
 
 import { ChatRom } from '../../types';
 import styles from './styles';
-
+import { color } from 'react-native-reanimated';
+import { Ionicons } from '@expo/vector-icons';
 
 export type chatListRomProps = {
     chatrom : ChatRom,
@@ -21,7 +22,9 @@ const ChatsListItem = (props: chatListRomProps) => {
     const navigation = useNavigation();
 
     const user = chatrom.users[1];
-
+    const  a = moment(chatrom.lastMessage.createdAt);
+    const  b = moment();
+    const Diff = b.diff(a, 'days') // 1
     const onClick = () => {
         navigation.navigate(
                 'ChatRom', 
@@ -32,6 +35,7 @@ const ChatsListItem = (props: chatListRomProps) => {
                 }
                 );
     }
+
     return (
         <TouchableWithoutFeedback onPress={onClick}>
             <View style={styles.container}>
@@ -47,11 +51,18 @@ const ChatsListItem = (props: chatListRomProps) => {
                     numberOfLines={1} 
                     ellipsizeMode={"tail"}
                     
-                    >{chatrom.lastMessage.content}</Text>
+                    ><Ionicons name="checkmark-done" size={20} color="gray" />{" " + chatrom.lastMessage.content}</Text>
                     </View>
                 </View>
-
-                <Text style={styles.time}>{moment(chatrom.lastMessage.createdAt).format('DD/MM/YYYY')}</Text>
+                <View >
+                    <Text style={chatrom.lastMessage.reder ? styles.time : styles.time2}  >
+                        {Diff === 0 ?
+                        a.format('hh:mm') :
+                        Diff === 1 ? 'hier' :
+                        a.format('DD/MM/YY') }
+                    </Text>
+                    {!chatrom.lastMessage.reder && <Text style={styles.nbMessage}>{chatrom.lastMessage.nbOfContent}</Text>}
+                </View>
                 
             </View>
         </TouchableWithoutFeedback>

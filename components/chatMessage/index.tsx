@@ -3,14 +3,16 @@ import React from "react";
 import { View, Text } from "react-native";
 import { Message } from "../../types";
 import styles from "./styles";
+import { Ionicons } from "@expo/vector-icons";
 
 export type ChatMessageProps = {
     message : Message,
+    name: string
 }
 
 const ChatMessage = (props : ChatMessageProps) => {
     
-    const { message } = props;
+    const { message, name } = props;
     const isMyMessage = () => {
         return message.user.id === 'u1';
     }
@@ -26,10 +28,12 @@ const ChatMessage = (props : ChatMessageProps) => {
                 }
                 
                 ]}>
-            {!isMyMessage() && <Text style={styles.name}>{message.user.name}</Text>}
+            {!isMyMessage() && <Text style={styles.name}>{
+            name
+            }</Text>}
             <Text style={styles.content}>{message.content}</Text>
             <Text style={styles.time}>
-                {moment(message.createdAt).format('HH:MM')}
+                {moment(message.createdAt).format('HH:MM ')}{isMyMessage() && <Ionicons name="checkmark-done" size={22} color="#43d0f5" />}
                 
             </Text>
         </View>

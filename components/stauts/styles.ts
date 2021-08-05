@@ -1,12 +1,16 @@
 import { StyleSheet } from "react-native";
 import { block } from "react-native-reanimated";
+import Colors from "../../constants/Colors";
 
 const styles = StyleSheet.create({
     container:{
         flexDirection: "row",
         width: '100%',
         justifyContent: "space-between",
-        padding: 10,
+        padding: 15,
+        borderBottomColor: "#dbdbdb",
+        borderBottomWidth : 0.2,
+        
     },
     containerleft:{
         flexDirection: "row",
@@ -15,23 +19,13 @@ const styles = StyleSheet.create({
         fontSize: 16,
         fontWeight: "bold",
     },
-    lastMessage:{
-        fontSize: 16,
-        color: "grey",
-    },
     midel:{
         justifyContent : "space-around"
     },
-    time:{
-        paddingRight: 25,
-        fontSize: 14,
+    status:{
+        fontSize: 16,
         color: "grey",
-    },
-    time2:{
-        textAlign: "center",
-        fontSize: 14,
-        color : "#00C15D",
-        
+        marginRight: 90,
     },
     image:{
         width: 65,
@@ -39,22 +33,19 @@ const styles = StyleSheet.create({
         marginRight: 15,
         borderRadius: 50,
     },
-    nbMessage:{
-        paddingHorizontal: 7,
-        paddingVertical: 1.5,
-        textAlign:"center",
+    
+    icon:{
+        backgroundColor : "#00C15D",
+        width: 65,
+        height: 65,
+        marginRight: 15,
         borderRadius: 50,
-        marginLeft: 55,
-        marginTop:20,
-        fontSize: 14,
-        fontWeight: "bold",
-        color: "white",
-        backgroundColor: "#00C15D",
-        
-        
+        justifyContent : "center",
+        alignItems: "center",
+        paddingTop :16,
+        paddingLeft :18,
 
     }
-    
 });
 
 export default styles;

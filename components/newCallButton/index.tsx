@@ -4,8 +4,9 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import styles from "./styles";
 import { TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import { MaterialIcons } from "@expo/vector-icons";
 
-const NewMessageButton = () => {
+const NewCallButton = () => {
 
     const navigation = useNavigation();
     const onclick = () => {
@@ -16,10 +17,10 @@ const NewMessageButton = () => {
     return(
         <View style={styles.container}>
             <TouchableOpacity onPress={onclick} >
-                <MaterialCommunityIcons name="message-reply-text" size={28} color={"white"}/>
+            <MaterialIcons name="add-call" size={28} color="white" />
             </TouchableOpacity>
         </View>
     )
 }
 
-export default NewMessageButton;
+export default NewCallButton;

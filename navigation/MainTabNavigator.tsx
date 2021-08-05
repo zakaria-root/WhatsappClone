@@ -15,6 +15,8 @@ import useColorScheme from '../hooks/useColorScheme';
 import TabOneScreen from '../screens/TabOneScreen';
 import ScreenChat from '../screens/screenChat';
 import { MainTabParamList, TabOneParamList, TabTwoParamList } from '../types';
+import ScreenStatus from '../screens/screenStatus'
+import ScreenCalls from '../screens/screenCalls';
 
 const MainTab = createMaterialTopTabNavigator<MainTabParamList>();
 
@@ -57,14 +59,14 @@ export default function MainTabNavigator() {
       />
       <MainTab.Screen
         name="Status"
-        component={ScreenChat}
+        component={ScreenStatus}
         options={{
           // tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
         }}
       />
       <MainTab.Screen
         name="Calls"
-        component={ScreenChat}
+        component={ScreenCalls}
         options={{
           // tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
         }}

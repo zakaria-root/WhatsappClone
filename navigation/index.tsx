@@ -3,7 +3,7 @@
  * https://reactnavigation.org/docs/getting-started
  *
  */
-import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native';
+import { NavigationContainer, DefaultTheme, DarkTheme, useRoute } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import * as React from 'react';
 import { ColorSchemeName ,Text, View,Image} from 'react-native';
@@ -86,7 +86,7 @@ function RootNavigator() {
       />
       <Stack.Screen 
       name="ChatRom" 
-      component={screenChatRom} 
+      component={screenChatRom}
       options={({ route }) => ({ 
         headerBackImage : () => (
           <View style={{ backgroundColor:Colors.light.tint, flexDirection: 'row' }}>

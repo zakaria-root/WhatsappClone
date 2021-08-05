@@ -7,22 +7,21 @@ import NewMessageButton from '../components/newMessageBtton';
 import { Text, View } from 'react-native';
 import ChatRoms from '../data/ChatRoms';
 import { isLoaded } from 'expo-font';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import firebase from 'firebase';
 import apiKeys from '../config/keys';
 import { useState } from 'react';
-import Navigation from '../navigation';
+
 import Authoriation from '../components/auth/Autorisation.';
 import Logout from '../components/auth/Logout';
 
-export default function ScreenChat({ route }){
+export default function ScreenChat(){
 
-
- 
 
     
     return (
     <View style={styles.container}>
+      
       {/* <Authoriation /> */}
       <FlatList
         style={{ width: "100%" }}
